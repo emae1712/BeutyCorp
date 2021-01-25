@@ -1,0 +1,2 @@
+# BeutyCorp
+Tienda virtual
