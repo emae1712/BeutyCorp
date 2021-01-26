@@ -36,7 +36,7 @@ const CatalogCarousel = () => {
 
 const Item = (props) => {
   const { item } = props;
-  console.log(item.image);
+
   return (
     <Paper>
       <img src={item.image} alt="Catalog" />
