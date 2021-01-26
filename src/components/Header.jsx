@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { NavLink } from 'react-router-dom';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import '../styles/Header.scss';
 
 const Header = () => (
@@ -9,7 +9,7 @@ const Header = () => (
     <div className="logo">
       BeautyCorp
     </div>
-    <div className="car"><ShoppingCartOutlined /></div>
+    <div className="car"><ShoppingCartIcon /></div>
     <nav>
       <NavLink activeClassName="activeRoute" activeStyle={{ color: 'rgba(110, 42, 142, 1)' }} to="/lbel">
         Lbel
