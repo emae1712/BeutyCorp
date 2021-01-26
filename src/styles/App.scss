@@ -1,0 +1,19 @@
+$main-color: rgba(110, 42, 142, 1);
+$button-main: rgba(50, 50, 71, 0.08);
+$button-secondary: rgba(105, 121, 248, 1);
+$car-note: rgba(0, 175, 155, 1);
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,14 +1,29 @@
 import React from 'react';
-import './App.css';
+import './styles/App.scss';
+import {
+  Switch,
+  Route,
+  BrowserRouter as Router,
+} from 'react-router-dom';
+import Header from './components/Header';
 import CatalogCarousel from './components/ViewProducts/CatalogCarrousel';
 
-const App = () => (
-  <div className="App">
-    <CatalogCarousel
-      next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
-      prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
-    />
-  </div>
-);
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/cyzone">
+            <CatalogCarousel
+              next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
+              prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
+            />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+  );
+}
 
 export default App;
