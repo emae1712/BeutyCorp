@@ -1,14 +1,26 @@
 import React from 'react';
-import './App.css';
-import CatalogCarousel from './components/ViewProducts/CatalogCarrousel';
+import './styles/App.scss';
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
+import Header from './components/Header';
+import CatalogCarousel from './components/ViewProducts/CatalogCarrousel';        
 
-const App = () => (
-  <div className="App">
-    <CatalogCarousel
-      next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
-      prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
-    />
-  </div>
-);
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Header />
+        <>
+          <h1>Beuty Corp</h1>
+        </>
+      </Router>
+      <CatalogCarousel
+        next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
+        prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
+      />
+    </div>
+  );
+}
 
 export default App;
