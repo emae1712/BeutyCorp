@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { Paper, Button } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import getData from '../../firebase/firebase-functions';
 
@@ -13,17 +13,6 @@ const CatalogCarousel = () => {
         setItems(images);
       });
   }, []);
-
-  // const items = [
-  //   {
-  //     name: 'Random Name #1',
-  //     description: 'Probably the most random thing you have ever seen!',
-  //   },
-  //   {
-  //     name: 'Random Name #2',
-  //     description: 'Hello World!',
-  //   },
-  // ];
 
   return (
     <Carousel indicators={false} navButtonsAlwaysVisible>
@@ -40,10 +29,6 @@ const Item = (props) => {
   return (
     <Paper>
       <img src={item.image} alt="Catalog" />
-
-      <Button className="CheckButton">
-        Check it out!
-      </Button>
     </Paper>
   );
 };
