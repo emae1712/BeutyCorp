@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Data from './firebase/data-beautyCorp';
 import db from './firebase/firebase-init';
 
