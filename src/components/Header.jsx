@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import '../styles/Header.scss';
@@ -22,4 +23,5 @@ const Header = () => (
     </nav>
   </header>
 );
+
 export default Header;
