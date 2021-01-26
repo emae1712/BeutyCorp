@@ -1,11 +1,14 @@
-// import logo from './logo.svg';
 import React from 'react';
 import './App.css';
+import CatalogCarousel from './components/ViewProducts/CatalogCarrousel';
 
-function App() {
-  return (
-    <h1>Beuty Corp</h1>
-  );
-}
+const App = () => (
+  <div className="App">
+    <CatalogCarousel
+      next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
+      prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
+    />
+  </div>
+);
 
 export default App;
