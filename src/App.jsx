@@ -7,9 +7,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import Header from './components/Header';
-
 import ViewProducts from './components/ViewProducts/ViewProducts';
-import CatalogCarousel from './components/ViewProducts/CatalogCarrousel';
 import PurchaseModal from "./components/ViewPurchase/PurchaseModal";
 
 

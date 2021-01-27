@@ -1,22 +1,25 @@
+/* eslint-disable */ 
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import {
+import
+{
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Card,
   CardMedia,
   CardContent,
   Typography,
   makeStyles,
 } from '@material-ui/core';
+
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import '../../styles/Modal.scss';
 import PropTypes from 'prop-types';
 import image from '../../images/1.png';
+import SignIn from './SignInModal';
 
 // card styles
 const useStyles = makeStyles((theme) => ({
@@ -52,7 +55,7 @@ const PurchaseModal = (props) => {
   }, [open]);
 
   const classes = useStyles();
-        
+
   // modal google
   const [openGoogle, setOpenGoogle] = useState(false);
 
@@ -177,30 +180,7 @@ const PurchaseModal = (props) => {
           <button type="button" onClick={handleClickOpenGoogle}>
             Ir a pagar
           </button>
-          <Dialog
-            open={openGoogle}
-            onCloseGoogle={handleCloseGoogle}
-            aria-labelledby="responsive-dialog-title"
-          >
-            <DialogTitle id="customized-dialog-title" onCloseGoogle={handleCloseGoogle}>
-              Use Googles location service?
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Let Google helpp apps determine location. This means sending
-                anonymous location data to Google, even when no apps are
-                running.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button autoFocus onClick={handleCloseGoogle} color="primary">
-                Disagree
-              </Button>
-              <Button onClick={handleCloseGoogle} color="primary" autoFocus>
-                Agree
-              </Button>
-            </DialogActions>
-          </Dialog>
+          <SignIn handleCloseGoogle={handleCloseGoogle} openGoogle={openGoogle} />
         </DialogActions>
       </Dialog>
     </section>

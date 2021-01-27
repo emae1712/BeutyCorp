@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { useState, useEffect } from 'react';
 import CatalogCarousel from './CatalogCarrousel';
 import ProductCard from './CardProducts';
