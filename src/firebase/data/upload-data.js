@@ -1,5 +1,5 @@
 /* eslint-disable */
-import Data from './firebase/data-beautyCorp';
+import Data from './firebase/data/data';
 import db from './firebase/firebase-init';
 
 const uploadData = () => {
@@ -14,6 +14,7 @@ const uploadData = () => {
       category: product['Categoría'],
       subcategory: product['Subcategoría'],
       off: product['Dscto 1'],
+      page: product.Page,
     })
       .then((data) => {
         console.log(data.id);

@@ -1,0 +1,90 @@
+@import "App.scss";
+
+.modal-products{
+  .dialogTittle{
+    color:$main-color;
+    padding: 0.5rem 1rem;
+  }
+  .send-consultant{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    display: inline-flex;
+    background-color: #FAFAFA;
+    p{
+      color: #3073BA;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    button{
+      height: 2rem;
+      width: 88px;
+      margin: auto;
+      border-radius: 5px;
+      background-color: #526EB2;
+      color: #FFFFFF;
+      line-height: 22px;
+      outline: none;
+      border: none;
+    }
+    
+  }
+  .cardContent{
+    display: inline-flex;
+    padding: 0 16px;
+
+    .btns{
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      .btns-quantity{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p{
+          color: $car-note;
+          font-weight: bold;
+        }
+
+        button{
+          background: #FFFFFF;
+          box-shadow: 0px 2px 2px rgba(50, 50, 71, 0.06), 0px 2px 4px rgba(50, 50, 71, 0.06);
+          border-radius: 5px;
+          outline: none;
+          height: 24px;
+          border: none;
+          color: #999999;
+          font-size: 1rem;
+        }
+      }
+    }
+    
+  }
+  .total-send{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .price-total{
+      display: inline-flex;
+      justify-content: space-around;
+      p{
+        margin: 1rem 3rem;
+      }
+    }
+    button{
+      height: 2rem;
+      width: 125px;
+      margin: auto;
+      border-radius: 5px;
+      background-color: #6E2A8E;
+      color: #FFFFFF;
+      line-height: 22px;
+      outline: none;
+      border: 1px solid #6E2A8E;
+    }
+    
+  }
+}

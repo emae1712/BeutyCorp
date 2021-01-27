@@ -7,8 +7,11 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import Header from './components/Header';
+
+import ViewProducts from './components/ViewProducts/ViewProducts';
 import CatalogCarousel from './components/ViewProducts/CatalogCarrousel';
 import PurchaseModal from "./components/ViewPurchase/PurchaseModal";
+
 
 function App() {
   return (
@@ -17,10 +20,7 @@ function App() {
         <Header />
         <Switch>
           <Route path="/cyzone">
-            <CatalogCarousel
-              next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
-              prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
-            />
+            <ViewProducts />
           </Route>
         </Switch>
         <Switch>
