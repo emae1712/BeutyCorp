@@ -13,6 +13,13 @@ const getData = {
       });
       return data;
     }),
+  // getProducts: (pageNumber) => db.collection('products').where('page', '==', pageNumber).get()
+  //   .then((products) => {
+  //     // const productsFiltered = [];
+  //     products.forEach((product) => {
+  //       console.log(product);
+  //     });
+  //   }),
 };
 
 export default getData;

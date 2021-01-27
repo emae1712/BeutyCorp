@@ -1,0 +1,24 @@
+.Carousel-root-1 {
+  overflow: hidden;
+  position: relative;
+  width: 90%;
+  height: 500px;
+  margin: 20px auto;
+}
+.productCard {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin: 10px;
+  padding: 10px;
+  .addProduct {
+    grid-column: 1 / 3;
+  }
+  p {
+    grid-column: 1 / 2;
+  }
+  .MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary {
+    width: 50%;
+    display: flex;
+    justify-self: right;
+  }
+}
