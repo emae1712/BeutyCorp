@@ -1,5 +1,5 @@
 /* eslint-disable */ 
-import React from 'react';
+import React, { useState } from 'react';
 import './styles/App.scss';
 import {
   Switch,
@@ -10,15 +10,12 @@ import Header from './components/Header';
 import ViewProducts from './components/ViewProducts/ViewProducts';
 import CartContext from './CartContext';
 
-const data = {
-  name: 'labial',
-  description: 'labial que pinta',
-};
-
 function App() {
+  const [valueContext, setValueContext] = useState([]);
+
   return (
     <div className="App">
-      <CartContext.Provider value={data}>
+      <CartContext.Provider value={{ valueContext, setValueContext }}>
         <Router>
           <Header />
           <Switch>

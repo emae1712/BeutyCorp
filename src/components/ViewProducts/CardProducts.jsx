@@ -1,5 +1,5 @@
 /* eslint-disable */ 
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PropTypes from 'prop-types';
+import CartContext from '../../CartContext';
 import '../../styles/Products.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,9 +41,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProductCard = (props) => {
+  const { valueContext, setValueContext } = useContext(CartContext);
   const { product } = props;
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+
+  useEffect(() => {
+    let unmounted = false;
+
+    return () => { unmounted = true; };
+  }, []);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -81,7 +89,18 @@ const ProductCard = (props) => {
           S/
           {product.price}
         </p>
-        <Button variant="contained" color="primary">
+        <Button 
+          variant="contained" 
+          color="primary" 
+          onClick={() => {
+            setValueContext([
+              ...valueContext,
+              {
+                name: product.name,
+                price: product.price,
+              }
+            ]);
+          }}>
           Añadir
         </Button>
       </Box>
