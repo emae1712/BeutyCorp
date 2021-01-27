@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React from 'react';
 import './styles/App.scss';
 import {
@@ -7,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Header from './components/Header';
 import CatalogCarousel from './components/ViewProducts/CatalogCarrousel';
+import PurchaseModal from "./components/ViewPurchase/PurchaseModal";
 
 function App() {
   return (
@@ -19,6 +21,11 @@ function App() {
               next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
               prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
             />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route path="/lbel">
+            <PurchaseModal/>
           </Route>
         </Switch>
       </Router>

@@ -1,5 +1,5 @@
+/* eslint-disable */ 
 import React from 'react';
-
 import { NavLink } from 'react-router-dom';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import '../styles/Header.scss';
