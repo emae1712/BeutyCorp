@@ -1,5 +1,5 @@
 /* eslint-disable */ 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -11,15 +11,28 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
+import { red, teal } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PropTypes from 'prop-types';
 import CartContext from '../../CartContext';
 import '../../styles/Products.scss';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const primary = teal[400];
 
 const useStyles = makeStyles((theme) => ({
+  
   root: {
-    maxWidth: 345,
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
   },
   media: {
     height: 0,
@@ -41,10 +54,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProductCard = (props) => {
+  const classes = useStyles();
   const { valueContext, setValueContext } = useContext(CartContext);
   const { product } = props;
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [ expanded, setExpanded ] = React.useState(false);
+  const [ open, setOpen ] = useState(false);
 
   useEffect(() => {
     let unmounted = false;
@@ -54,6 +68,18 @@ const ProductCard = (props) => {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
   };
 
   return (
@@ -90,9 +116,11 @@ const ProductCard = (props) => {
           {product.price}
         </p>
         <Button 
+          className="add-product-cart"
           variant="contained" 
           color="primary" 
           onClick={() => {
+            handleClick();
             setValueContext([
               ...valueContext,
               {
@@ -103,6 +131,11 @@ const ProductCard = (props) => {
           }}>
           Añadir
         </Button>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success" className="alertCustom">
+            This is a success message!
+          </Alert>
+        </Snackbar>
       </Box>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
