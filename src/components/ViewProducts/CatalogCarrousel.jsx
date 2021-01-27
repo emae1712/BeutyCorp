@@ -17,7 +17,7 @@ const CatalogCarousel = (props) => {
   }, []);
 
   return (
-    <Carousel indicators={false} navButtonsAlwaysVisible autoPlay={false}>
+    <Carousel indicators={false} navButtonsAlwaysVisible autoPlay={false} className="carousel">
       {
         items.map((item) => <Item key={123456} item={item} handlePageChange={handlePageChange} />)
       }

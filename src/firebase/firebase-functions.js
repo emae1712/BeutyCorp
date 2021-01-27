@@ -13,13 +13,22 @@ const getData = {
       });
       return data;
     }),
-  // getProducts: (pageNumber) => db.collection('products').where('page', '==', pageNumber).get()
-  //   .then((products) => {
-  //     // const productsFiltered = [];
-  //     products.forEach((product) => {
-  //       console.log(product);
-  //     });
-  //   }),
+  getProducts: (pageNumber) => db.collection('products').where('page', '==', pageNumber).get()
+    .then((products) => {
+      const productsFiltered = [];
+      products.forEach((product) => {
+        const eachProduct = product.data();
+        productsFiltered.push({
+          name: eachProduct.name,
+          brand: eachProduct.brand,
+          category: eachProduct.category,
+          price: eachProduct.price,
+          description: eachProduct.description,
+          image: eachProduct.imgUrl,
+        });
+      });
+      return productsFiltered;
+    }),
 };
 
 export default getData;

@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PropTypes from 'prop-types';
 import '../../styles/Products.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RecipeReviewCard() {
+const ProductCard = (props) => {
+  const { product } = props;
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -45,8 +48,8 @@ export default function RecipeReviewCard() {
   };
 
   return (
-    <Card className={classes.root}>
-      <div className="productCard">
+    <Card className={{ root: classes.root, cardProduct: 'cardProduct' }}>
+      <Box className="productCard" boxShadow={2}>
         <IconButton
           className={
             clsx(classes.expand, {
@@ -61,32 +64,40 @@ export default function RecipeReviewCard() {
         </IconButton>
         <CardMedia
           className={{ root: classes.media, imageProduct: 'imageProduct' }}
-          image="https://www.sephora.es/dw/image/v2/BCVW_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dwaa3ef4a8/images/hi-res/SKU/SKU_4/337229_swatch.jpg?sw=585&sh=585&sm=fit"
-          title="Paella dish"
+          image={product.image}
+          title={product.name}
         />
         <CardContent>
           <Typography variant="body2" color="textPrimary" component="p">
-            Title
+            {product.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsum reiciendis.
           </Typography>
         </CardContent>
         <CardActions disableSpacing />
-        <p>S/ 50</p>
+        <p className="product-price">
+          S/
+          {product.price}
+        </p>
         <Button variant="contained" color="primary">
           Añadir
         </Button>
-      </div>
+      </Box>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography variant="body2" color="textPrimary" component="p">Description</Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
+            {product.description}
           </Typography>
         </CardContent>
       </Collapse>
     </Card>
   );
-}
+};
+
+ProductCard.propTypes = {
+  product: PropTypes.instanceOf(Array).isRequired,
+};
+
+export default ProductCard;
