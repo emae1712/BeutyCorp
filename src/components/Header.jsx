@@ -21,10 +21,12 @@ const Header = () => {
   
   return (
   <header className="header__container">
-    <div className="logo">
-      BeautyCorp
-    </div>
-    <div className="car" onClick={handleClickOpen('paper')} ><ShoppingCartIcon /></div>
+     <div className="firstHead">
+      <div className="logo">
+        BeautyCorp
+      </div>
+      <div className="car" onClick={handleClickOpen('paper')} ><ShoppingCartIcon /></div>
+     </div>
     <PurchaseModal handleClose = {handleClose} open={open} scroll={scroll} />
     <nav>
       <NavLink activeClassName="activeRoute" activeStyle={{ color: 'rgba(110, 42, 142, 1)' }} to="/lbel">
