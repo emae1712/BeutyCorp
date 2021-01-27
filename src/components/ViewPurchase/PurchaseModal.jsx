@@ -52,7 +52,7 @@ const PurchaseModal = (props) => {
   }, [open]);
 
   const classes = useStyles();
-
+        
   // modal google
   const [openGoogle, setOpenGoogle] = useState(false);
 

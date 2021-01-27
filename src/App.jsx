@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React from 'react';
 import './styles/App.scss';
 import {
@@ -6,7 +7,11 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import Header from './components/Header';
+
 import ViewProducts from './components/ViewProducts/ViewProducts';
+import CatalogCarousel from './components/ViewProducts/CatalogCarrousel';
+import PurchaseModal from "./components/ViewPurchase/PurchaseModal";
+
 
 function App() {
   return (
@@ -16,6 +21,11 @@ function App() {
         <Switch>
           <Route path="/cyzone">
             <ViewProducts />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route path="/lbel">
+            <PurchaseModal/>
           </Route>
         </Switch>
       </Router>
