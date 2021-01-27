@@ -1,11 +1,14 @@
 /* eslint-disable */ 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import '../styles/Header.scss';
 import PurchaseModal from './ViewPurchase/PurchaseModal';
+import CartContext from '../CartContext';
 
 const Header = () => {
+  const cartValue = useContext(CartContext);
+  console.log(cartValue);
   // modal configuration
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
@@ -23,7 +26,7 @@ const Header = () => {
   <header className="header__container">
      <div className="firstHead">
       <div className="logo">
-        BeautyCorp
+        {cartValue.name}
       </div>
       <div className="car" onClick={handleClickOpen('paper')} ><ShoppingCartIcon /></div>
      </div>
