@@ -88,7 +88,7 @@ const PurchaseModal = (props) => {
         />
         <div className="send-consultant">
           <p>Envia tu resumen de pedido a tu consultora</p>
-          <button type="button">Enviar</button>
+          <a href="https://api.whatsapp.com/send?text=mañana%20iré%20a%20comer%20?" target="_blank">Enviar</a>
         </div>
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText

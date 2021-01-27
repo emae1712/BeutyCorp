@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProductCard = (props) => {
-  const { product } = props;
+  const { product, addProduct } = props;
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -81,7 +81,7 @@ const ProductCard = (props) => {
           S/
           {product.price}
         </p>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={() => addProduct(product)}>
           Añadir
         </Button>
       </Box>

@@ -8,6 +8,26 @@ const ViewProducts = () => {
   const [page, setPage] = useState(1);
   const [products, setProducts] = useState([]);
 
+  // select each product and save in an array
+  const [cards, setCards] = useState([]);
+
+  const addProduct = (cart)=>{
+    // create a copy of product to add more properties
+    const newCart = {
+      id: cart.id,
+      image: cart.image,
+      name: cart.name,
+      price: cart.price,
+      quantity: 1,
+      subtotal: 0,
+    }
+    //receive an array of each card clicked
+    setCards([
+      ...cards,
+      newCart
+    ]);
+  }
+
   useEffect(() => {
     let unmounted = false;
 
@@ -32,7 +52,7 @@ const ViewProducts = () => {
         prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
       />
       {products.map((product) => (
-        <ProductCard product={product} />
+        <ProductCard product={product} addProduct= {addProduct} />
       ))}
     </>
   );

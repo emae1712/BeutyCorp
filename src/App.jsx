@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 import Header from './components/Header';
 import ViewProducts from './components/ViewProducts/ViewProducts';
-import PurchaseModal from "./components/ViewPurchase/PurchaseModal";
 
 
 function App() {
@@ -19,11 +18,6 @@ function App() {
         <Switch>
           <Route path="/cyzone">
             <ViewProducts />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/lbel">
-            <PurchaseModal/>
           </Route>
         </Switch>
       </Router>
