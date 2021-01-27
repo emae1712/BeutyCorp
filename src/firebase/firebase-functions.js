@@ -19,6 +19,7 @@ const getData = {
       products.forEach((product) => {
         const eachProduct = product.data();
         productsFiltered.push({
+          id: eachProduct.id,
           name: eachProduct.name,
           brand: eachProduct.brand,
           category: eachProduct.category,

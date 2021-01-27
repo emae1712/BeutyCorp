@@ -1,5 +1,5 @@
 /* eslint-disable */ 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import
 {
   Dialog,
@@ -20,6 +20,7 @@ import '../../styles/Modal.scss';
 import PropTypes from 'prop-types';
 import image from '../../images/1.png';
 import SignIn from './SignInModal';
+import CartContext from '../../CartContext';
 
 // card styles
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +43,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PurchaseModal = (props) => {
+
+  //products using React context
+  const { valueContext, setValueContext } = useContext(CartContext);
+  console.log(valueContext);
+
+  // remove a product
+  const deleteProduct = (id)=>{
+    setValueContext(valueContext.filter((oneCard)=> oneCard.id !== id))
+  }
+
   const { open, handleClose, scroll } = props;
 
   const descriptionElementRef = React.useRef(null);
@@ -96,80 +107,50 @@ const PurchaseModal = (props) => {
             ref={descriptionElementRef}
             tabIndex={-1}
           >
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image={image}
-                title="hola"
-              />
-              <div className={classes.cardDetails}>
-                <CardContent className="cardContent">
-                  <div>
-                    <Typography
-                      variant="subtitle1"
-                      paragraph
-                      className="name-product"
-                    >
-                      Nike × Pigalle 8P Basketball
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                      S/ 35.00
-                    </Typography>
-                  </div>
-                  <div className="btns">
-                    <span className="btn-remove">
-                      <DeleteOutlineIcon />
-                    </span>
-                    <div className="btns-quantity">
-                      <button type="button" className="btn-add">
-                        -
-                      </button>
-                      <p className="price-item">01</p>
-                      <button type="button" className="btn-less">
-                        +
-                      </button>
+            {
+              valueContext.length > 0 ?
+              valueContext.map((cart)=>(
+              <Card className={classes.card} key = {cart.id}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={cart.image}
+                  title="hola"
+                />
+                <div className={classes.cardDetails}>
+                  <CardContent className="cardContent">
+                    <div>
+                      <Typography
+                        variant="subtitle1"
+                        paragraph
+                        className="name-product"
+                      >
+                        Nike × Pigalle 8P Basketball
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        S/ 35.00
+                      </Typography>
                     </div>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image={image}
-                title="hola"
-              />
-              <div className={classes.cardDetails}>
-                <CardContent className="cardContent">
-                  <div>
-                    <Typography
-                      variant="subtitle1"
-                      paragraph
-                      className="name-product"
-                    >
-                      Nike × Pigalle 8P Basketball
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                      S/ 35.00
-                    </Typography>
-                  </div>
-                  <div className="btns">
-                    <span className="btn-remove">
-                      <DeleteOutlineIcon />
-                    </span>
-                    <div className="btns-quantity">
-                      <button type="button" className="btn-add">
-                        -
-                      </button>
-                      <p className="price-item">01</p>
-                      <button type="button" className="btn-less">
-                        +
-                      </button>
+                    <div className="btns">
+                      <span className="btn-remove">
+                        <DeleteOutlineIcon onClick = {()=> {deleteProduct(cart.id)}} />
+                      </span>
+                      <div className="btns-quantity">
+                        <button type="button" className="btn-add">
+                          -
+                        </button>
+                        <p className="price-item">01</p>
+                        <button type="button" className="btn-less">
+                          +
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
+                  </CardContent>
+                </div>
+              </Card>
+            )) :(
+              <p>No hay productos seleccionados</p> 
+            )
+          }
           </DialogContentText>
         </DialogContent>
         <DialogActions className="total-send">
