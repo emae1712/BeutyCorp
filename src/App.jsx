@@ -7,18 +7,26 @@ import {
 } from 'react-router-dom';
 import Header from './components/Header';
 import ViewProducts from './components/ViewProducts/ViewProducts';
+import CartContext from './CartContext';
+
+const data = {
+  name: 'labial',
+  description: 'labial que pinta',
+};
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/cyzone">
-            <ViewProducts />
-          </Route>
-        </Switch>
-      </Router>
+      <CartContext.Provider value={data}>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/cyzone">
+              <ViewProducts />
+            </Route>
+          </Switch>
+        </Router>
+      </CartContext.Provider>
     </div>
   );
 }
