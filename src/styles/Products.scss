@@ -8,8 +8,28 @@
   height: 420px;
   margin: 20px auto;
 }
+.card{
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 85%;
+  height: 455px;
+  margin: 20px auto;
+}
+.back{
+  display: flex;
+      background: none;
+      border: none;
+      color: thistle;
+      font-size: 1em;
+      font-weight: bold;
+      justify-content: left;
+      width: 100%;
+      margin: 15px;
+      cursor: pointer;
+}
 footer{
-  position: fixed;
+  // position: fixed;
   bottom: 0px;
   height: 92px;
   width: 100%;

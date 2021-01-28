@@ -20,7 +20,6 @@ import '../../styles/Modal.scss';
 import PropTypes from 'prop-types';
 import SignIn from './SignInModal';
 import CartContext from '../../CartContext';
-import { orderBD } from "../../firebase/firebase-functions";
 
 // card styles
 const useStyles = makeStyles((theme) => ({
@@ -46,7 +45,6 @@ const PurchaseModal = (props) => {
 
   //products using React context
   const { valueContext, setValueContext } = useContext(CartContext);
-  console.log(valueContext);
 
   // remove a product
   const deleteProduct = (id)=>{
@@ -186,10 +184,7 @@ const PurchaseModal = (props) => {
             <p> S/ {total}</p>
           </div>
           <button type="button" 
-          onClick={() => {
-            handleClickOpenGoogle();
-            orderBD({orderSummary: valueContext});
-          }}>
+          onClick={ handleClickOpenGoogle}>
             Ir a pagar
           </button>
           <SignIn handleCloseGoogle={handleCloseGoogle} openGoogle={openGoogle} />

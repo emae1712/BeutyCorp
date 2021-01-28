@@ -1,0 +1,77 @@
+@import "App.scss";
+.off,
+h1,
+h2,
+.benefits {
+  font-family: "MuseoModerno", cursive;
+}
+.home {
+  .off {
+    background: $main-color;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .welcome {
+    margin: 0px 15px;
+    h1 {
+      color: $car-note;
+      margin-bottom: 0px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 32px;
+    }
+    h2 {
+      color: $main-color;
+      margin-top: 0px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 29px;
+    }
+  }
+  .galery-brand {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0px;
+    .cat-lbel {
+      position: absolute;
+    }
+  }
+  .steps {
+    margin: 10px;
+    div {
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+      .number {
+        display: flex;
+        justify-content: center;
+        color: $car-note;
+        font-size: 3em !important;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 48px;
+        line-height: 22px;
+      }
+    }
+    p {
+      color: #333;
+      text-align: center;
+    }
+  }
+  .benefits {
+    background: $button-secondary;
+    color: white;
+    padding: 15px;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
