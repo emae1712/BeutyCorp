@@ -17,10 +17,8 @@ const Home = () => (
       <Link to="/lbel" className="cat-lbel"><img src="https://raw.githubusercontent.com/VeroSilva/BeutyCorp/master/src/images/lbel.png" alt="Lbel" /></Link>
       <Link to="/esika" className="cat-esika"><img src="https://raw.githubusercontent.com/VeroSilva/BeutyCorp/master/src/images/esika.png" alt="Esika" /></Link>
     </div>
-    <div className="footer">
-      <img src="https://raw.githubusercontent.com/VeroSilva/BeutyCorp/master/src/images/footer.png" alt="Cyzone" className="cat-cyzone" />
-    </div>
     <div className="steps">
+      <h3 className="how-works">Cómo funciona?</h3>
       <div>
         <h1 className="number">1</h1>
         <p>Escoge tu catalogo favorito y añade todos los productos que quieras</p>

@@ -143,9 +143,9 @@ const ProductCard = (props) => {
           }}>
           Añadir
         </Button>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Snackbar open={open} autoHideDuration={900} onClose={handleClose}>
           <Alert onClose={handleClose} severity="success" className="alertCustom">
-            This is a success message!
+            Se agrego a tu carrito
           </Alert>
         </Snackbar>
       </Box>

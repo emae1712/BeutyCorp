@@ -102,7 +102,8 @@ const PurchaseModal = (props) => {
   const handleCloseGoogle = () => {
     setOpenGoogle(false);
   };
-
+  const message = "https://api.whatsapp.com/send?text=" + encodeURIComponent('¡Hola! \n Estos son los productos que me gustaría solicitar del catálogo digital.\n\n 1 unidad x 14 - MASCARILLA PURIFICANTE - S/ 36.00\n S/ 36.00 \n\n 1 unidad x 162 - MICRO EXFOLIANTE ALISANTE - S/ 36.00\n S/ 36.00 \n\n Monto total aproximado: S/ 72 \n\n Me confirmas si puedes realizar el pedido.\n\n Costo de envío con Delivery: \n Lima S/7.00 \n Provincia S/10.00 \n\n Muchas gracias.') 
+  
   return (
     <section>
       <Dialog
@@ -124,7 +125,7 @@ const PurchaseModal = (props) => {
         />
         <div className="send-consultant">
           <p>Envia tu resumen de pedido a tu consultora</p>
-          <a href="https://api.whatsapp.com/send?text=mañana%20iré%20a%20comer%20?" target="_blank">Enviar</a>
+          <a href={message} target="_blank">Enviar</a> 
         </div>
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText
@@ -176,7 +177,7 @@ const PurchaseModal = (props) => {
               <p>No hay productos seleccionados</p> 
             )
           }
-          </DialogContentText>
+        </DialogContentText>
         </DialogContent>
         <DialogActions className="total-send">
           <div className="price-total">
@@ -185,7 +186,7 @@ const PurchaseModal = (props) => {
           </div>
           <button type="button" 
           onClick={ handleClickOpenGoogle}>
-            Ir a pagar
+            Comprar
           </button>
           <SignIn handleCloseGoogle={handleCloseGoogle} openGoogle={openGoogle} />
         </DialogActions>
