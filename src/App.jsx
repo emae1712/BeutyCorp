@@ -9,23 +9,29 @@ import {
 import Header from './components/Header';
 import ViewProducts from './components/ViewProducts/ViewProducts';
 import CartContext from './CartContext';
+import firebase from "firebase/app";
+import "firebase/auth";
+import { FirebaseAuthProvider } from '@react-firebase/auth';
+// import firebaseConfig from './firebase/firebase-init'
 
 function App() {
   const [valueContext, setValueContext] = useState([]);
 
   return (
-    <div className="App">
-      <CartContext.Provider value={{ valueContext, setValueContext }}>
-        <Router>
-          <Header />
-          <Switch>
-            <Route path="/cyzone">
-              <ViewProducts />
-            </Route>
-          </Switch>
-        </Router>
-      </CartContext.Provider>
-    </div>
+    <FirebaseAuthProvider firebase={firebase}>
+      <div className="App">
+        <CartContext.Provider value={{ valueContext, setValueContext }}>
+          <Router>
+            <Header />
+            <Switch>
+              <Route path="/cyzone">
+                <ViewProducts />
+              </Route>
+            </Switch>
+          </Router>
+        </CartContext.Provider>
+      </div>
+    </FirebaseAuthProvider>
   );
 }
 
