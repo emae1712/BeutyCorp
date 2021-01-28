@@ -20,7 +20,6 @@ import '../../styles/Modal.scss';
 import PropTypes from 'prop-types';
 import SignIn from './SignInModal';
 import CartContext from '../../CartContext';
-import { orderBD } from "../../firebase/firebase-functions";
 
 // card styles
 const useStyles = makeStyles((theme) => ({
@@ -46,7 +45,6 @@ const PurchaseModal = (props) => {
 
   //products using React context
   const { valueContext, setValueContext } = useContext(CartContext);
-  console.log(valueContext);
 
   // remove a product
   const deleteProduct = (id)=>{
@@ -104,7 +102,8 @@ const PurchaseModal = (props) => {
   const handleCloseGoogle = () => {
     setOpenGoogle(false);
   };
-
+  const message = "https://api.whatsapp.com/send?text=" + encodeURIComponent('¡Hola! Estos son los productos que me gustaría solicitar del catálogo digital. 1 unidad x 14 - MASCARILLA PURIFICANTE - S/ 36.00 S/ 36.00 1 unidad x 162 - MICRO EXFOLIANTE ALISANTE - S/ 36.00 S/ 36.00 Monto total aproximado: S/ 72 Me confirmas si puedes realizar el pedido. Costo de envío con Delivery: Lima S/7.00 Provincia S/10.00 Muchas gracias.') 
+  
   return (
     <section>
       <Dialog
@@ -126,7 +125,7 @@ const PurchaseModal = (props) => {
         />
         <div className="send-consultant">
           <p>Envia tu resumen de pedido a tu consultora</p>
-          <a href="https://api.whatsapp.com/send?text=mañana%20iré%20a%20comer%20?" target="_blank">Enviar</a>
+          <a href={message} target="_blank">Enviar</a> 
         </div>
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText
@@ -178,7 +177,7 @@ const PurchaseModal = (props) => {
               <p>No hay productos seleccionados</p> 
             )
           }
-          </DialogContentText>
+        </DialogContentText>
         </DialogContent>
         <DialogActions className="total-send">
           <div className="price-total">
@@ -186,11 +185,8 @@ const PurchaseModal = (props) => {
             <p> S/ {total}</p>
           </div>
           <button type="button" 
-          onClick={() => {
-            handleClickOpenGoogle();
-            orderBD({orderSummary: valueContext});
-          }}>
-            Ir a pagar
+          onClick={ handleClickOpenGoogle}>
+            Comprar
           </button>
           <SignIn handleCloseGoogle={handleCloseGoogle} openGoogle={openGoogle} />
         </DialogActions>

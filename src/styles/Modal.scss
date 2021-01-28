@@ -4,15 +4,20 @@
   .dialogTittle {
     color: $main-color;
     padding: 0.5rem 1rem;
+    h2 {
+      font-family: "MuseoModerno";
+      font-size: 18px;
+      font-weight: bold;
+    }
   }
   .send-consultant {
-    width: 90%;
-    margin: auto;
+    padding: 0 1rem;
     text-align: center;
     display: inline-flex;
-    background-color: #fafafa;
+    background-color: #adbcd7 !important;
     p {
-      color: #3073ba;
+      font-family: "MuseoModerno";
+      color: white;
       font-weight: 500;
       font-size: 14px;
       line-height: 22px;
@@ -22,12 +27,13 @@
       width: 88px;
       margin: auto;
       border-radius: 5px;
-      background-color: #526eb2;
-      color: #ffffff;
+      background-color: #fff;
+      color: #3073ba;
       line-height: 22px;
       outline: none;
       border: none;
       text-decoration: none;
+      border: 1px solid #3073ba;
     }
   }
   .cardContent {

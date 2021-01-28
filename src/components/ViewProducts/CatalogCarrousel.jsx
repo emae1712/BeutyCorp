@@ -9,7 +9,7 @@ import getData from '../../firebase/firebase-functions';
 const CatalogCarousel = (props) => {
   const { handlePageChange } = props;
   const [items, setItems] = useState([]);
-
+console.log(items);
   useEffect(() => {
     getData.getImages()
       .then((images) => {

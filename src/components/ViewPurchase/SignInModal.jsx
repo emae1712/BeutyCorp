@@ -1,5 +1,5 @@
 /* eslint-disable */ 
-import React, {Fragment} from 'react';
+import React, {Fragment, useContext} from 'react';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import
@@ -17,9 +17,14 @@ import Header from '../Header/Header';
 import NavReview from '../Header/NavReview';
 import '../../styles/SignIn.scss';
 import { IfFirebaseUnAuthed, IfFirebaseAuthed } from '@react-firebase/auth';
+import { orderBD } from "../../firebase/firebase-functions";
+import CartContext from '../../CartContext';
 
 const SignIn = (props) => {
   const { openGoogle, handleCloseGoogle } = props;
+  //products using React context
+  const { valueContext } = useContext(CartContext);
+  console.log(valueContext);
 
   return (
     <>
@@ -50,6 +55,7 @@ const SignIn = (props) => {
             <DialogActions>
               <Button autofocus
                 onClick={() => {
+                  orderBD({orderSummary: valueContext});
                   const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
                   firebase.auth().signInWithPopup(googleAuthProvider);
                 }}
