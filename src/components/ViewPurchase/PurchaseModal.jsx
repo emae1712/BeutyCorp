@@ -1,5 +1,5 @@
 /* eslint-disable */ 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import
 {
   Dialog,
@@ -18,8 +18,9 @@ import CloseIcon from '@material-ui/icons/Close';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import '../../styles/Modal.scss';
 import PropTypes from 'prop-types';
-import image from '../../images/1.png';
 import SignIn from './SignInModal';
+import CartContext from '../../CartContext';
+import { orderBD } from "../../firebase/firebase-functions";
 
 // card styles
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +43,43 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PurchaseModal = (props) => {
+
+  //products using React context
+  const { valueContext, setValueContext } = useContext(CartContext);
+  console.log(valueContext);
+
+  // remove a product
+  const deleteProduct = (id)=>{
+    setValueContext(valueContext.filter((oneCard)=> oneCard.id !== id))
+  }
+
+  //increase products
+  const increaseProduct = (id)=>{
+    const moreProducts = valueContext.map((oneCard)=>{
+      if(oneCard.id === id) {
+        oneCard.quantity ++;
+      };
+      return oneCard;
+      
+    })
+    setValueContext(moreProducts)
+  }
+
+  //decrease products
+  const decreaseProduct = (id)=>{
+    const moreProducts = valueContext.map((oneCard)=>{
+      if(oneCard.id === id ) {
+        oneCard.quantity === 1 ? oneCard.quantity = oneCard.quantity : oneCard.quantity --;
+      }
+      return oneCard;
+    })
+    setValueContext(moreProducts)
+  }
+
+  // sum of products
+  const total = valueContext.reduce((sum, cart) => ( sum + cart.subtotal ), 0);
+  
+
   const { open, handleClose, scroll } = props;
 
   const descriptionElementRef = React.useRef(null);
@@ -88,7 +126,7 @@ const PurchaseModal = (props) => {
         />
         <div className="send-consultant">
           <p>Envia tu resumen de pedido a tu consultora</p>
-          <button type="button">Enviar</button>
+          <a href="https://api.whatsapp.com/send?text=mañana%20iré%20a%20comer%20?" target="_blank">Enviar</a>
         </div>
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText
@@ -96,88 +134,62 @@ const PurchaseModal = (props) => {
             ref={descriptionElementRef}
             tabIndex={-1}
           >
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image={image}
-                title="hola"
-              />
-              <div className={classes.cardDetails}>
-                <CardContent className="cardContent">
-                  <div>
-                    <Typography
-                      variant="subtitle1"
-                      paragraph
-                      className="name-product"
-                    >
-                      Nike × Pigalle 8P Basketball
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                      S/ 35.00
-                    </Typography>
-                  </div>
-                  <div className="btns">
-                    <span className="btn-remove">
-                      <DeleteOutlineIcon />
-                    </span>
-                    <div className="btns-quantity">
-                      <button type="button" className="btn-add">
-                        -
-                      </button>
-                      <p className="price-item">01</p>
-                      <button type="button" className="btn-less">
-                        +
-                      </button>
+            {
+              valueContext.length > 0 ?
+              valueContext.map((cart)=>(
+              <Card className={classes.card} key = {cart.id}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={cart.image}
+                  title="hola"
+                />
+                <div className={classes.cardDetails}>
+                  <CardContent className="cardContent">
+                    <div>
+                      <Typography
+                        variant="subtitle1"
+                        paragraph
+                        className="name-product"
+                      >
+                        {cart.name}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        S/. {cart.subtotal = cart.quantity * cart.price}
+                      </Typography>
                     </div>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image={image}
-                title="hola"
-              />
-              <div className={classes.cardDetails}>
-                <CardContent className="cardContent">
-                  <div>
-                    <Typography
-                      variant="subtitle1"
-                      paragraph
-                      className="name-product"
-                    >
-                      Nike × Pigalle 8P Basketball
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                      S/ 35.00
-                    </Typography>
-                  </div>
-                  <div className="btns">
-                    <span className="btn-remove">
-                      <DeleteOutlineIcon />
-                    </span>
-                    <div className="btns-quantity">
-                      <button type="button" className="btn-add">
-                        -
-                      </button>
-                      <p className="price-item">01</p>
-                      <button type="button" className="btn-less">
-                        +
-                      </button>
+                    <div className="btns">
+                      <span className="btn-remove">
+                        <DeleteOutlineIcon onClick = {()=> {deleteProduct(cart.id)}} />
+                      </span>
+                      <div className="btns-quantity">
+                        <button type="button" className="btn-less" onClick = {()=> {decreaseProduct(cart.id)}}>
+                          -
+                        </button>
+                        <p className="quantity">{cart.quantity}</p>
+                        <button type="button" className="btn-add" onClick = {()=> {increaseProduct(cart.id)}}>
+                          +
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
+                  </CardContent>
+                </div>
+              </Card>
+            )) :(
+              <p>No hay productos seleccionados</p> 
+            )
+          }
           </DialogContentText>
         </DialogContent>
         <DialogActions className="total-send">
           <div className="price-total">
             <p>Precio Total</p>
-            <p> S/ 35.00</p>
+            <p> S/ {total}</p>
           </div>
-          <button type="button" onClick={handleClickOpenGoogle}>
+          <button type="button" 
+          onClick={() => {
+            handleClickOpenGoogle();
+            orderBD({orderSummary: valueContext});
+          }}>
             Ir a pagar
           </button>
           <SignIn handleCloseGoogle={handleCloseGoogle} openGoogle={openGoogle} />

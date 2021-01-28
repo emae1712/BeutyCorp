@@ -17,7 +17,7 @@
       font-size: 14px;
       line-height: 22px;
     }
-    button {
+    a{
       height: 2rem;
       width: 88px;
       margin: auto;
@@ -27,6 +27,7 @@
       line-height: 22px;
       outline: none;
       border: none;
+      text-decoration: none;
     }
   }
   .cardContent {
