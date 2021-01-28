@@ -13,6 +13,10 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { FirebaseAuthProvider } from '@react-firebase/auth';
 // import firebaseConfig from './firebase/firebase-init'
+import Lbel from "../src/images/Lbel.png";
+import Esika from "../src/images/Esika.png";
+import Footer from "../src/images/footer.png";
+import '../src/styles/Products.scss'
 
 function App() {
   const [valueContext, setValueContext] = useState([]);
@@ -28,6 +32,19 @@ function App() {
                 <ViewProducts />
               </Route>
             </Switch>
+            <Switch>
+              <Route path="/lbel">
+                <img className = "lbel" src={Lbel} alt="lbel"/>
+              </Route>
+            </Switch>
+            <Switch>
+              <Route path="/esika">
+                <img className = "esika" src={Esika} alt="esika"/>
+              </Route>
+            </Switch>
+            <footer>
+              <img className = "footer" src={Footer} alt="footer"/>
+            </footer>
           </Router>
         </CartContext.Provider>
       </div>
