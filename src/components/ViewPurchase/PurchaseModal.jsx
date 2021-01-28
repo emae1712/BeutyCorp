@@ -18,9 +18,9 @@ import CloseIcon from '@material-ui/icons/Close';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import '../../styles/Modal.scss';
 import PropTypes from 'prop-types';
-import image from '../../images/1.png';
 import SignIn from './SignInModal';
 import CartContext from '../../CartContext';
+import { orderBD } from "../../firebase/firebase-functions";
 
 // card styles
 const useStyles = makeStyles((theme) => ({
@@ -52,6 +52,33 @@ const PurchaseModal = (props) => {
   const deleteProduct = (id)=>{
     setValueContext(valueContext.filter((oneCard)=> oneCard.id !== id))
   }
+
+  //increase products
+  const increaseProduct = (id)=>{
+    const moreProducts = valueContext.map((oneCard)=>{
+      if(oneCard.id === id) {
+        oneCard.quantity ++;
+      };
+      return oneCard;
+      
+    })
+    setValueContext(moreProducts)
+  }
+
+  //decrease products
+  const decreaseProduct = (id)=>{
+    const moreProducts = valueContext.map((oneCard)=>{
+      if(oneCard.id === id ) {
+        oneCard.quantity === 1 ? oneCard.quantity = oneCard.quantity : oneCard.quantity --;
+      }
+      return oneCard;
+    })
+    setValueContext(moreProducts)
+  }
+
+  // sum of products
+  const total = valueContext.reduce((sum, cart) => ( sum + cart.subtotal ), 0);
+  
 
   const { open, handleClose, scroll } = props;
 
@@ -124,10 +151,10 @@ const PurchaseModal = (props) => {
                         paragraph
                         className="name-product"
                       >
-                        Nike × Pigalle 8P Basketball
+                        {cart.name}
                       </Typography>
                       <Typography variant="subtitle1" color="textSecondary">
-                        S/ 35.00
+                        S/. {cart.subtotal = cart.quantity * cart.price}
                       </Typography>
                     </div>
                     <div className="btns">
@@ -135,11 +162,11 @@ const PurchaseModal = (props) => {
                         <DeleteOutlineIcon onClick = {()=> {deleteProduct(cart.id)}} />
                       </span>
                       <div className="btns-quantity">
-                        <button type="button" className="btn-add">
+                        <button type="button" className="btn-less" onClick = {()=> {decreaseProduct(cart.id)}}>
                           -
                         </button>
-                        <p className="price-item">01</p>
-                        <button type="button" className="btn-less">
+                        <p className="quantity">{cart.quantity}</p>
+                        <button type="button" className="btn-add" onClick = {()=> {increaseProduct(cart.id)}}>
                           +
                         </button>
                       </div>
@@ -156,9 +183,13 @@ const PurchaseModal = (props) => {
         <DialogActions className="total-send">
           <div className="price-total">
             <p>Precio Total</p>
-            <p> S/ 35.00</p>
+            <p> S/ {total}</p>
           </div>
-          <button type="button" onClick={handleClickOpenGoogle}>
+          <button type="button" 
+          onClick={() => {
+            handleClickOpenGoogle();
+            orderBD({orderSummary: valueContext});
+          }}>
             Ir a pagar
           </button>
           <SignIn handleCloseGoogle={handleCloseGoogle} openGoogle={openGoogle} />

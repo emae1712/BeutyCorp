@@ -33,3 +33,8 @@ const getData = {
 };
 
 export default getData;
+
+// Crear la base de datos de la orden
+export const orderBD = (sendOrder) => {
+  db.collection('Orders').add(sendOrder);
+};

@@ -9,6 +9,12 @@
 }
 .cardProduct {
   box-shadow: none !important;
+  .boton{
+    background-color: red;
+  }
+  .primary{
+    background-color: white;
+  }
   .productCard {
     display: grid;
     grid-template-columns: 40% 60%;

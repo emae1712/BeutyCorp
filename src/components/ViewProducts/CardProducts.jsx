@@ -60,6 +60,24 @@ const ProductCard = (props) => {
   const [ expanded, setExpanded ] = React.useState(false);
   const [ open, setOpen ] = useState(false);
 
+  //adding products to cart
+  const addProducts = ()=>{
+    const cart = valueContext.find((oneCart)=> oneCart.id === product.id)
+    if(cart ===undefined){
+      setValueContext([
+        ...valueContext,
+        {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: 1,
+          subtotal: 0,
+        }
+      ]);
+    }
+  }
+
   useEffect(() => {
     let unmounted = false;
 
@@ -121,17 +139,7 @@ const ProductCard = (props) => {
           color="primary" 
           onClick={() => {
             handleClick();
-            setValueContext([
-              ...valueContext,
-              {
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                image: product.image,
-                quantity: 1,
-                subtotal: 0,
-              }
-            ]);
+            addProducts();
           }}>
           Añadir
         </Button>

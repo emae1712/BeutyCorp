@@ -32,7 +32,7 @@ const ViewProducts = () => {
         prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
       />
       {products.map((product) => (
-        <ProductCard product={product} />
+        <ProductCard product={product} key = {product.id}/>
       ))}
     </>
   );
