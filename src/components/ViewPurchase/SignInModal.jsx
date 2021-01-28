@@ -13,6 +13,9 @@ import
 import { TextField } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import FormControl from '@material-ui/core/FormControl';
+import Header from '../Header/Header';
+import NavReview from '../Header/NavReview';
+import '../../styles/SignIn.scss';
 import { IfFirebaseUnAuthed, IfFirebaseAuthed } from '@react-firebase/auth';
 
 const SignIn = (props) => {
@@ -28,18 +31,19 @@ const SignIn = (props) => {
               onCloseGoogle={handleCloseGoogle}
               aria-labelledby="responsive-dialog-title"
             >
-            <DialogTitle id="customized-dialog-title" onCloseGoogle={handleCloseGoogle}>
-              Use Googles location service?
-            </DialogTitle>
             <CloseIcon
               onClick={handleCloseGoogle}
               color="primary"
             />
+            <DialogTitle className="logo" id="customized-dialog-title" onCloseGoogle={handleCloseGoogle}>
+              BEAUTYCORP
+            </DialogTitle>
             <DialogContent>
               <DialogContentText>
-                Let Google helpp apps determine location. This means sending
-                anonymous location data to Google, even when no apps are
-                running.
+                Necesitamos conocer más de ti
+              </DialogContentText>
+              <DialogContentText>
+                Inicia sesión/Registrate con
               </DialogContentText>
             </DialogContent>
             <DialogActions>
@@ -49,7 +53,7 @@ const SignIn = (props) => {
                   firebase.auth().signInWithPopup(googleAuthProvider);
                 }}
               >
-                Sign in
+                GOOGLE
               </Button>
             </DialogActions>
             </Dialog>
@@ -59,6 +63,8 @@ const SignIn = (props) => {
       <IfFirebaseAuthed>
         {({ firebase }) => (
           <div className="order-review">
+            <Header />
+            <NavReview />
             <button
               className="close-btn"
               type="button"
@@ -123,41 +129,3 @@ SignIn.propTypes = {
 };
 
 export default SignIn;
-
-        {/* <FirebaseAuthConsumer>
-            {({ isSignedIn, firebase }) => {
-              if (isSignedIn === true) {
-                return (
-                  <div>
-                    <h2>You're signed in 🎉 </h2>
-                    <button
-                      onClick={() => {
-                        firebase
-                          .app()
-                          .auth()
-                          .signOut();
-                      }}
-                    >
-                      Sign out
-                    </button>
-                  </div>
-                );
-              } else {
-                return (
-                  <div>
-                    <DialogContent>
-                      <DialogContentText>
-                        Inicia sesión/Registrate con
-                      </DialogContentText>
-                    </DialogContent>
-                    <Button autoFocus onClick={handleCloseGoogle} color="primary" onClick={() => {
-                      const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-                      firebase.auth().signInWithPopup(googleAuthProvider);
-                    }}>
-                      Google
-                    </Button>
-                  </div>
-                );
-              }
-            }}
-          </FirebaseAuthConsumer> */}

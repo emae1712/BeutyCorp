@@ -17,7 +17,7 @@
       font-size: 14px;
       line-height: 22px;
     }
-    a{
+    a {
       height: 2rem;
       width: 88px;
       margin: auto;
@@ -92,18 +92,16 @@
     background: white;
     width: 100%;
     .close-btn {
-      display: block;
-      position: absolute;
-      top: 10px;
-      left: 10px;
+      display: flex;
       background: none;
       border: none;
       color: thistle;
       font-size: 1em;
       font-weight: bold;
-    }
-    .title-review {
-      margin-top: 50px;
+      justify-content: left;
+      width: 100%;
+      margin: 15px;
+      cursor: pointer;
     }
   }
 }

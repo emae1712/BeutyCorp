@@ -1,0 +1,20 @@
+@import "App.scss";
+
+.MuiPaper-root.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.MuiPaper-elevation24.MuiPaper-rounded {
+  .logo {
+    width: 50%;
+    margin: auto;
+    color: $main-color;
+    font-family: "MuseoModerno", cursive;
+  }
+  .MuiButtonBase-root.MuiButton-root.MuiButton-text {
+    background: $car-note;
+    width: 80%;
+    margin: auto;
+    color: white;
+  }
+  p {
+    display: flex;
+    justify-content: center;
+  }
+}
