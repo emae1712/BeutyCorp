@@ -4,15 +4,20 @@
   .dialogTittle {
     color: $main-color;
     padding: 0.5rem 1rem;
+    h2{
+      font-family: 'MuseoModerno';
+      font-size: 18px;
+      font-weight: bold;
+    }
   }
   .send-consultant {
-    width: 90%;
-    margin: auto;
+    padding: 0 1rem;
     text-align: center;
     display: inline-flex;
     background-color: #fafafa;
     p {
-      color: #3073ba;
+      font-family: 'MuseoModerno';
+      color: rgba(0, 30, 73, 1);
       font-weight: 500;
       font-size: 14px;
       line-height: 22px;
@@ -22,7 +27,7 @@
       width: 88px;
       margin: auto;
       border-radius: 5px;
-      background-color: #526eb2;
+      background-color: #00AF9B;
       color: #ffffff;
       line-height: 22px;
       outline: none;

@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import { NavLink } from 'react-router-dom';
 import '../../styles/Header.scss';
 import React from 'react';
