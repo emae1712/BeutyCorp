@@ -102,7 +102,7 @@ const PurchaseModal = (props) => {
   const handleCloseGoogle = () => {
     setOpenGoogle(false);
   };
-  const message = "https://api.whatsapp.com/send?text=" + encodeURIComponent('¡Hola! Estos son los productos que me gustaría solicitar del catálogo digital. 1 unidad x 14 - MASCARILLA PURIFICANTE - S/ 36.00 S/ 36.00 1 unidad x 162 - MICRO EXFOLIANTE ALISANTE - S/ 36.00 S/ 36.00 Monto total aproximado: S/ 72 Me confirmas si puedes realizar el pedido. Costo de envío con Delivery: Lima S/7.00 Provincia S/10.00 Muchas gracias.') 
+  const message = "https://api.whatsapp.com/send?text=" + encodeURIComponent('¡Hola! \n Estos son los productos que me gustaría solicitar del catálogo digital.\n\n 1 unidad x 14 - MASCARILLA PURIFICANTE - S/ 36.00\n S/ 36.00 \n\n 1 unidad x 162 - MICRO EXFOLIANTE ALISANTE - S/ 36.00\n S/ 36.00 \n\n Monto total aproximado: S/ 72 \n\n Me confirmas si puedes realizar el pedido.\n\n Costo de envío con Delivery: \n Lima S/7.00 \n Provincia S/10.00 \n\n Muchas gracias.') 
   
   return (
     <section>
