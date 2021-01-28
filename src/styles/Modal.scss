@@ -1,57 +1,57 @@
 @import "App.scss";
 
-.modal-products{
-  .dialogTittle{
-    color:$main-color;
+.modal-products {
+  .dialogTittle {
+    color: $main-color;
     padding: 0.5rem 1rem;
   }
-  .send-consultant{
+  .send-consultant {
     width: 90%;
     margin: auto;
     text-align: center;
     display: inline-flex;
-    background-color: #FAFAFA;
-    p{
-      color: #3073BA;
+    background-color: #fafafa;
+    p {
+      color: #3073ba;
       font-weight: 500;
       font-size: 14px;
       line-height: 22px;
     }
-    button{
+    button {
       height: 2rem;
       width: 88px;
       margin: auto;
       border-radius: 5px;
-      background-color: #526EB2;
-      color: #FFFFFF;
+      background-color: #526eb2;
+      color: #ffffff;
       line-height: 22px;
       outline: none;
       border: none;
     }
-    
   }
-  .cardContent{
+  .cardContent {
     display: inline-flex;
     padding: 0 16px;
 
-    .btns{
+    .btns {
       flex-direction: column;
       align-items: center;
       display: flex;
       justify-content: space-between;
 
-      .btns-quantity{
+      .btns-quantity {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        p{
+        p {
           color: $car-note;
           font-weight: bold;
         }
 
-        button{
-          background: #FFFFFF;
-          box-shadow: 0px 2px 2px rgba(50, 50, 71, 0.06), 0px 2px 4px rgba(50, 50, 71, 0.06);
+        button {
+          background: #ffffff;
+          box-shadow: 0px 2px 2px rgba(50, 50, 71, 0.06),
+            0px 2px 4px rgba(50, 50, 71, 0.06);
           border-radius: 5px;
           outline: none;
           height: 24px;
@@ -61,30 +61,48 @@
         }
       }
     }
-    
   }
-  .total-send{
+  .total-send {
     display: flex;
     flex-direction: column;
     text-align: center;
-    .price-total{
+    .price-total {
       display: inline-flex;
       justify-content: space-around;
-      p{
+      p {
         margin: 1rem 3rem;
       }
     }
-    button{
+    button {
       height: 2rem;
       width: 125px;
       margin: auto;
       border-radius: 5px;
-      background-color: #6E2A8E;
-      color: #FFFFFF;
+      background-color: #6e2a8e;
+      color: #ffffff;
       line-height: 22px;
       outline: none;
-      border: 1px solid #6E2A8E;
+      border: 1px solid #6e2a8e;
     }
-    
+  }
+  .order-review {
+    position: absolute;
+    height: 100vh;
+    background: white;
+    width: 100%;
+    .close-btn {
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: none;
+      border: none;
+      color: thistle;
+      font-size: 1em;
+      font-weight: bold;
+    }
+    .title-review {
+      margin-top: 50px;
+    }
   }
 }
