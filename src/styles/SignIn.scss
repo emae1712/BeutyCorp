@@ -1,20 +1,50 @@
 @import "App.scss";
 
+.MuiTypography-root.MuiTypography-h6 {
+  font-family: "MuseoModerno", cursive;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 38px;
+}
 .MuiPaper-root.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.MuiPaper-elevation24.MuiPaper-rounded {
+  .close-icon {
+    position: absolute !important;
+    right: 0px !important;
+    margin: 10px;
+    color: $main-color;
+  }
   .logo {
     width: 50%;
     margin: auto;
     color: $main-color;
-    font-family: "MuseoModerno", cursive;
   }
   .MuiButtonBase-root.MuiButton-root.MuiButton-text {
     background: $car-note;
     width: 80%;
-    margin: auto;
+    margin: 0px auto 20px auto;
     color: white;
   }
   p {
     display: flex;
     justify-content: center;
+  }
+  .text-secondary {
+    margin: 0px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 22px;
+    color: #999999;
+  }
+  .sign-in {
+    font-family: MuseoModerno;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 34px;
+    text-align: center;
+    color: #00af9b;
   }
 }

@@ -32,6 +32,7 @@ const SignIn = (props) => {
               aria-labelledby="responsive-dialog-title"
             >
             <CloseIcon
+              className="close-icon"
               onClick={handleCloseGoogle}
               color="primary"
             />
@@ -39,10 +40,10 @@ const SignIn = (props) => {
               BEAUTYCORP
             </DialogTitle>
             <DialogContent>
-              <DialogContentText>
+              <DialogContentText className="text-secondary">
                 Necesitamos conocer más de ti
               </DialogContentText>
-              <DialogContentText>
+              <DialogContentText className="sign-in">
                 Inicia sesión/Registrate con
               </DialogContentText>
             </DialogContent>
