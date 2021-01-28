@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import CatalogCarousel from './CatalogCarrousel';
 import ProductCard from './CardProducts';
 import getData from '../../firebase/firebase-functions';
+import NavBrand from '../Header/NavBrand';
 
 const ViewProducts = () => {
   const [page, setPage] = useState(1);
@@ -26,6 +27,7 @@ const ViewProducts = () => {
 
   return (
     <>
+      <NavBrand /> 
       <CatalogCarousel
         handlePageChange={handlePageChange}
         next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}

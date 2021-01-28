@@ -6,7 +6,8 @@ import {
   Route,
   BrowserRouter as Router,
 } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './components/Header/Header';
+import Home from './components/Home';
 import ViewProducts from './components/ViewProducts/ViewProducts';
 import CartContext from './CartContext';
 import firebase from "firebase/app";
@@ -26,6 +27,11 @@ function App() {
             <Switch>
               <Route path="/cyzone">
                 <ViewProducts />
+              </Route>
+            </Switch>
+            <Switch>
+              <Route path="/" exact>
+                <Home />
               </Route>
             </Switch>
           </Router>
