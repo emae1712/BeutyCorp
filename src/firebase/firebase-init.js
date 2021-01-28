@@ -3,7 +3,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyBX4TxYLSJl8urzezGI3mkRH5n6BOjhFV8',
   authDomain: 'beutycorp-a4fb3.firebaseapp.com',
   projectId: 'beutycorp-a4fb3',
