@@ -38,3 +38,8 @@ export default getData;
 export const orderBD = (sendOrder) => {
   db.collection('Orders').add(sendOrder);
 };
+
+// Obtener la lista de ordenes de firebase
+export const getOrders = () => {
+  db.collection('Orders');
+};

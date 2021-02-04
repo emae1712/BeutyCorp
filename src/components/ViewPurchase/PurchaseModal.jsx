@@ -102,6 +102,10 @@ const PurchaseModal = (props) => {
   const handleCloseGoogle = () => {
     setOpenGoogle(false);
   };
+  
+  const send = valueContext.map((product)=>{
+    return encodeURIComponent(product.quantity + ' unidades - ' + product.name + ' - S/. ' + product.subtotal +'\n')
+  })
   const message = "https://api.whatsapp.com/send?text=" + encodeURIComponent('¡Hola! \n Estos son los productos que me gustaría solicitar del catálogo digital.\n\n 1 unidad x 14 - MASCARILLA PURIFICANTE - S/ 36.00\n S/ 36.00 \n\n 1 unidad x 162 - MICRO EXFOLIANTE ALISANTE - S/ 36.00\n S/ 36.00 \n\n Monto total aproximado: S/ 72 \n\n Me confirmas si puedes realizar el pedido.\n\n Costo de envío con Delivery: \n Lima S/7.00 \n Provincia S/10.00 \n\n Muchas gracias.') 
   
   return (
@@ -125,7 +129,7 @@ const PurchaseModal = (props) => {
         />
         <div className="send-consultant">
           <p>Envia tu resumen de pedido a tu consultora</p>
-          <a href={message} target="_blank">Enviar</a> 
+          <a href={"https://api.whatsapp.com/send?text=" + "¡Hola! \n Estos son los productos que me gustaría solicitar del catálogo digital.\n\n " +  send + "\n\n Monto total aproximado: S/ " + `${total}` + '\n\n Me confirmas si puedes realizar el pedido.\n\n Costo de envío con Delivery: \n Lima S/7.00 \n Provincia S/10.00 \n\n Muchas gracias.'} target="_blank">Enviar</a> 
         </div>
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText
